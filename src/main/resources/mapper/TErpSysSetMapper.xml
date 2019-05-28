@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TErpSysSetMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.TErpSysSet">
+    <id column="set_id" jdbcType="BIGINT" property="setId" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="logo_add" jdbcType="VARCHAR" property="logoAdd" />
+    <result column="enterprise_id" jdbcType="BIGINT" property="enterpriseId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    set_id, subject, logo_add, enterprise_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_erp_sys_set
+    where set_id = #{setId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_erp_sys_set
+    where set_id = #{setId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.TErpSysSet">
+    insert into t_erp_sys_set (set_id, subject, logo_add, 
+      enterprise_id)
+    values (#{setId,jdbcType=BIGINT}, #{subject,jdbcType=VARCHAR}, #{logoAdd,jdbcType=VARCHAR}, 
+      #{enterpriseId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.TErpSysSet">
+    insert into t_erp_sys_set
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="setId != null">
+        set_id,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="logoAdd != null">
+        logo_add,
+      </if>
+      <if test="enterpriseId != null">
+        enterprise_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="setId != null">
+        #{setId,jdbcType=BIGINT},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="logoAdd != null">
+        #{logoAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null">
+        #{enterpriseId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.TErpSysSet">
+    update t_erp_sys_set
+    <set>
+      <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="logoAdd != null">
+        logo_add = #{logoAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null">
+        enterprise_id = #{enterpriseId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where set_id = #{setId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.TErpSysSet">
+    update t_erp_sys_set
+    set subject = #{subject,jdbcType=VARCHAR},
+      logo_add = #{logoAdd,jdbcType=VARCHAR},
+      enterprise_id = #{enterpriseId,jdbcType=BIGINT}
+    where set_id = #{setId,jdbcType=BIGINT}
+  </update>
+</mapper>

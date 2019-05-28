@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TErpSysRateMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.TErpSysRate">
+    <id column="rate_id" jdbcType="BIGINT" property="rateId" />
+    <result column="currency_code" jdbcType="VARCHAR" property="currencyCode" />
+    <result column="currency_name" jdbcType="VARCHAR" property="currencyName" />
+    <result column="standard_rate" jdbcType="NUMERIC" property="standardRate" />
+    <result column="country_cn" jdbcType="VARCHAR" property="countryCn" />
+    <result column="country_en" jdbcType="VARCHAR" property="countryEn" />
+    <result column="country_short" jdbcType="VARCHAR" property="countryShort" />
+    <result column="proportion" jdbcType="NUMERIC" property="proportion" />
+    <result column="state" jdbcType="SMALLINT" property="state" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_user_id" jdbcType="BIGINT" property="modifyUserId" />
+    <result column="modify_user_name" jdbcType="VARCHAR" property="modifyUserName" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="last_modify_date" jdbcType="TIMESTAMP" property="lastModifyDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rate_id, currency_code, currency_name, standard_rate, country_cn, country_en, country_short, 
+    proportion, state, create_user_id, create_user_name, create_date, modify_user_id, 
+    modify_user_name, modify_date, last_modify_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_erp_sys_rate
+    where rate_id = #{rateId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_erp_sys_rate
+    where rate_id = #{rateId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.TErpSysRate">
+    insert into t_erp_sys_rate (rate_id, currency_code, currency_name, 
+      standard_rate, country_cn, country_en, 
+      country_short, proportion, state, 
+      create_user_id, create_user_name, create_date, 
+      modify_user_id, modify_user_name, modify_date, 
+      last_modify_date)
+    values (#{rateId,jdbcType=BIGINT}, #{currencyCode,jdbcType=VARCHAR}, #{currencyName,jdbcType=VARCHAR}, 
+      #{standardRate,jdbcType=NUMERIC}, #{countryCn,jdbcType=VARCHAR}, #{countryEn,jdbcType=VARCHAR}, 
+      #{countryShort,jdbcType=VARCHAR}, #{proportion,jdbcType=NUMERIC}, #{state,jdbcType=SMALLINT}, 
+      #{createUserId,jdbcType=BIGINT}, #{createUserName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{modifyUserId,jdbcType=BIGINT}, #{modifyUserName,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, 
+      #{lastModifyDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.TErpSysRate">
+    insert into t_erp_sys_rate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rateId != null">
+        rate_id,
+      </if>
+      <if test="currencyCode != null">
+        currency_code,
+      </if>
+      <if test="currencyName != null">
+        currency_name,
+      </if>
+      <if test="standardRate != null">
+        standard_rate,
+      </if>
+      <if test="countryCn != null">
+        country_cn,
+      </if>
+      <if test="countryEn != null">
+        country_en,
+      </if>
+      <if test="countryShort != null">
+        country_short,
+      </if>
+      <if test="proportion != null">
+        proportion,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createUserName != null">
+        create_user_name,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyUserId != null">
+        modify_user_id,
+      </if>
+      <if test="modifyUserName != null">
+        modify_user_name,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="lastModifyDate != null">
+        last_modify_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rateId != null">
+        #{rateId,jdbcType=BIGINT},
+      </if>
+      <if test="currencyCode != null">
+        #{currencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyName != null">
+        #{currencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="standardRate != null">
+        #{standardRate,jdbcType=NUMERIC},
+      </if>
+      <if test="countryCn != null">
+        #{countryCn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryEn != null">
+        #{countryEn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryShort != null">
+        #{countryShort,jdbcType=VARCHAR},
+      </if>
+      <if test="proportion != null">
+        #{proportion,jdbcType=NUMERIC},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null">
+        #{modifyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifyUserName != null">
+        #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null">
+        #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.TErpSysRate">
+    update t_erp_sys_rate
+    <set>
+      <if test="currencyCode != null">
+        currency_code = #{currencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyName != null">
+        currency_name = #{currencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="standardRate != null">
+        standard_rate = #{standardRate,jdbcType=NUMERIC},
+      </if>
+      <if test="countryCn != null">
+        country_cn = #{countryCn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryEn != null">
+        country_en = #{countryEn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryShort != null">
+        country_short = #{countryShort,jdbcType=VARCHAR},
+      </if>
+      <if test="proportion != null">
+        proportion = #{proportion,jdbcType=NUMERIC},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserName != null">
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null">
+        modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+      </if>
+      <if test="modifyUserName != null">
+        modify_user_name = #{modifyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyDate != null">
+        last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rate_id = #{rateId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.TErpSysRate">
+    update t_erp_sys_rate
+    set currency_code = #{currencyCode,jdbcType=VARCHAR},
+      currency_name = #{currencyName,jdbcType=VARCHAR},
+      standard_rate = #{standardRate,jdbcType=NUMERIC},
+      country_cn = #{countryCn,jdbcType=VARCHAR},
+      country_en = #{countryEn,jdbcType=VARCHAR},
+      country_short = #{countryShort,jdbcType=VARCHAR},
+      proportion = #{proportion,jdbcType=NUMERIC},
+      state = #{state,jdbcType=SMALLINT},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      modify_user_id = #{modifyUserId,jdbcType=BIGINT},
+      modify_user_name = #{modifyUserName,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      last_modify_date = #{lastModifyDate,jdbcType=TIMESTAMP}
+    where rate_id = #{rateId,jdbcType=BIGINT}
+  </update>
+</mapper>
